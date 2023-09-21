@@ -1,0 +1,15 @@
+.search-results {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 1000px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 0;
+}
+
+.search-result {
+  margin-top: 10px;
+}

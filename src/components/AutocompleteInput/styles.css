@@ -1,0 +1,54 @@
+.autocomplete-input {
+    position: relative;
+    display: inline-block;
+    width: 1000px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+    z-index: 2;
+  }
+  
+  input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none; 
+  }
+  
+  ul.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #dfe1e5;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 6px rgba(32, 33, 36, 0.28);
+    width: 100%;
+  }
+  
+  ul.suggestions-list li {
+    padding: 10px 20px; 
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  ul.suggestions-list li.search-history {
+    color: purple;
+  }
+  
+  ul.suggestions-list li.suggestion-record {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  ul.suggestions-list li:hover {
+    background-color: #f2f2f2;
+    color: #000;
+  }
+  
