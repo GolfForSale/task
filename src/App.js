@@ -5,9 +5,8 @@ import ResultsList from './components/ResultsList';
 
 function App() {
   const [search, setSearch] = useState('')
-console.log('search', search)
   return (
-    <div className="">
+    <div>
       <AutocompleteInput setSearch={setSearch}/>
       {search && <ResultsList query={search} />}
     </div>
