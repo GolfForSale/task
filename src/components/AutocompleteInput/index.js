@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './styles.css';
 import mockData from '../../consts/mockData.json';
+import { generateSuggestions } from './utils';
 
 const AutocompleteInput = ({setSearch}) => {
   const [inputValue, setInputValue] = useState('');
@@ -33,36 +34,10 @@ const AutocompleteInput = ({setSearch}) => {
     };
   }, []);
 
-const generateSuggestions = (value, allData) => {
-        const filteredSuggestions = allData.filter((suggestion) =>
-        suggestion.text.toLowerCase().startsWith((value || '').toLowerCase())
-    );
-    
-    const searchHistorySuggestions = filteredSuggestions.filter(
-        (suggestion) => suggestion.isSearchHistory
-    );
-
-    const regularSuggestions = filteredSuggestions.filter(
-        (suggestion) => !suggestion.isSearchHistory
-    );
-
-    const limitedSearchHistorySuggestions = searchHistorySuggestions.slice(0, 10);
-    const amountOfRegularSuggestions = 10-limitedSearchHistorySuggestions.length
-    const limitedRegularSuggestions = regularSuggestions.slice(0, amountOfRegularSuggestions);
-
-    const generatedSuggestions =  [
-        ...limitedSearchHistorySuggestions,
-        ...limitedRegularSuggestions,
-    ];
-    return generatedSuggestions
-  }
-
-
   useEffect(() => {
     const combinedSuggestions = generateSuggestions(inputValue, allData)
     setSuggestions(combinedSuggestions);
   }, [allData, inputValue]);
-  
 
 
   const handleInputChange = (e) => {
@@ -87,7 +62,6 @@ const generateSuggestions = (value, allData) => {
         }
     }
   };
-
 
   const handleSuggestionClick = (clickedSuggestion) => {
         const updatedSuggestions = allData.map((suggestion) =>
@@ -116,7 +90,6 @@ const generateSuggestions = (value, allData) => {
       return suggestion;
     });
     setAllData(updatedSuggestions);
-
   };
   
   const renderSuggestions = () => {
